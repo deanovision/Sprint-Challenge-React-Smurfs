@@ -1,25 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { SmurfFormWrapper } from "./StyledComponents";
 
 class SmurfForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      age: '',
-      height: ''
+      name: "",
+      age: "",
+      height: ""
     };
   }
 
   addSmurf = event => {
     event.preventDefault();
+    this.props.addNewSmurf(this.state);
     // add code to create the smurf using the api
 
     this.setState({
-      name: '',
-      age: '',
-      height: ''
+      name: "",
+      age: "",
+      height: ""
     });
-  }
+  };
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -27,8 +29,9 @@ class SmurfForm extends Component {
 
   render() {
     return (
-      <div className="SmurfForm">
+      <SmurfFormWrapper>
         <form onSubmit={this.addSmurf}>
+          <h2>Smurf Village</h2>
           <input
             onChange={this.handleInputChange}
             placeholder="name"
@@ -49,7 +52,7 @@ class SmurfForm extends Component {
           />
           <button type="submit">Add to the village</button>
         </form>
-      </div>
+      </SmurfFormWrapper>
     );
   }
 }
