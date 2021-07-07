@@ -1,20 +1,25 @@
-import React from 'react';
+import React from "react";
+import { SmurfCard } from "./StyledComponents";
 
 const Smurf = props => {
+  const update = () => {
+    props.history.push(`/update/${props.id}`);
+  };
   return (
-    <div className="Smurf">
+    <SmurfCard>
       <h3>{props.name}</h3>
       <strong>{props.height} tall</strong>
       <p>{props.age} smurf years old</p>
-    </div>
+      <button onClick={update}>Update Smurf</button>
+      <button onClick={() => props.removeSmurf(props.id)}>Delete Smurf</button>
+    </SmurfCard>
   );
 };
 
 Smurf.defaultProps = {
-  name: '',
-  height: '',
-  age: ''
+  name: "",
+  height: "",
+  age: ""
 };
 
 export default Smurf;
-
